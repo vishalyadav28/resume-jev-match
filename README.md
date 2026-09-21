@@ -150,20 +150,7 @@ cp .env.example .env
 # then edit .env and set TYPESAFE_API_KEY
 ```
 
-Get a key from [TypeSafe's waitlist](https://typesafe.ai) — this is what the
-sample requests below use.
-
-**Optional, no waitlist needed:** Jev is also available as the
-`typesafe-ai/jev` model on [Vercel's AI Gateway](https://vercel.com/docs/ai-gateway),
-a proxy that lets you call it (and other providers' models) through one
-Vercel credential instead of a direct TypeSafe account. `TypeSafeClassifier`
-talks to `api.typesafe.ai` by default; pointing `TYPESAFE_BASE_URL` at the
-gateway instead sends requests through it, with no code changes:
-
-```bash
-TYPESAFE_API_KEY=<your-vercel-ai-gateway-credential>   # from your Vercel project
-TYPESAFE_BASE_URL=https://ai-gateway.vercel.sh/typesafe
-```
+Get a key from [TypeSafe's waitlist](https://typesafe.ai).
 
 ## Run
 

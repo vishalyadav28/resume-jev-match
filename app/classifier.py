@@ -96,21 +96,15 @@ def get_classifier() -> TypeSafeClassifier:
     requests still reuse one classifier instance instead of building a new
     one per call.
 
-    Reads api_key/base_url from our own Settings (which loads .env) rather
-    than letting TypeSafeClassifier() read the raw process environment --
+    Reads api_key from our own Settings (which loads .env) rather than
+    letting TypeSafeClassifier() read the raw process environment --
     pydantic-settings loading a .env file does not export it into
     os.environ, so the two would otherwise disagree about whether a key is
     configured.
     """
     settings = get_settings()
-    if settings.typesafe_api_key and settings.typesafe_base_url:
-        return TypeSafeClassifier(
-            api_key=settings.typesafe_api_key, base_url=settings.typesafe_base_url
-        )
     if settings.typesafe_api_key:
         return TypeSafeClassifier(api_key=settings.typesafe_api_key)
-    if settings.typesafe_base_url:
-        return TypeSafeClassifier(base_url=settings.typesafe_base_url)
     return TypeSafeClassifier()
 
 
