@@ -161,7 +161,7 @@ talks to `api.typesafe.ai` by default; pointing `TYPESAFE_BASE_URL` at the
 gateway instead sends requests through it, with no code changes:
 
 ```bash
-TYPESAFE_API_KEY=<your Vercel AI Gateway credential>
+TYPESAFE_API_KEY=<your-vercel-ai-gateway-credential>   # from your Vercel project
 TYPESAFE_BASE_URL=https://ai-gateway.vercel.sh/typesafe
 ```
 
