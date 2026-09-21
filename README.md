@@ -95,6 +95,50 @@ tests/            # classifier + API tests, TypeSafeClassifier mocked out
 `classifier.py` is deliberately independent of FastAPI: it's the reusable,
 directly-testable core, and `main.py` just wires it up to HTTP.
 
+## Request flow
+
+`POST /match`, end to end:
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Main as main.py
+    participant Clf as classifier.py
+    participant SDK as TypeSafeClassifier (LangChain Runnable)
+    participant Jev as Jev API
+
+    Client->>Main: POST /match {resume, job_description}
+    Main->>Main: _require_configured()<br/>(503 if TYPESAFE_API_KEY unset)
+    Main->>Clf: match_resume(resume, job_description)
+    Clf->>Clf: _build_state() + _build_questions()<br/>(overall_fit, has_required_skills, seniority_match)
+    Clf->>SDK: .invoke({state, questions})
+    SDK->>Jev: one fan-out HTTP request
+    Jev-->>SDK: typed answers (nouls, choices, scores)
+    SDK-->>Clf: ClassifierResponse
+    Clf->>Clf: _to_match_result()<br/>(normalize fit_score, resolve legend)
+    Clf-->>Main: MatchResult
+    Main->>Main: _to_response()<br/>(apply confidence gate)
+    Main-->>Client: 200 MatchResponse
+```
+
+`POST /batch-match` follows the same shape, with two differences: `classifier.py`
+builds a list of requests and sends them through `TypeSafeClassifier.batch()`
+instead of one `.invoke()` call, and `main.py` zips the results back up with
+their caller-supplied `resume_id`s and sorts by `fit_score` descending before
+responding.
+
+**If Jev itself fails**, one of `main.py`'s exception handlers converts it to
+a clean JSON error instead of a raw 500 — matched by exception type, most
+specific first:
+
+| Jev-side failure | Handler | Response |
+|---|---|---|
+| No API key configured at all | `_require_configured()` | `503 missing_api_key` |
+| API key rejected | `TypeSafeAuthenticationError` | `401 authentication_failed` |
+| Rate limited | `TypeSafeRateLimitError` | `429 rate_limited` |
+| Network/timeout, no response received | `TypeSafeAPIConnectionError` | `502 upstream_unreachable` |
+| Any other API error (400/403/404/422/5xx) | `TypeSafeAPIError` | passes through Jev's own status, `typesafe_api_error` |
+
 ## Setup
 
 ```bash
