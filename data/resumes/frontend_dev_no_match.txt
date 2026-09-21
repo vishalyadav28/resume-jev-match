@@ -1,0 +1,17 @@
+Priya Sharma
+Frontend Engineer
+
+Experience:
+Frontend Engineer, Media company (2020-present, 5 years)
+- Built and maintained the company's React + Next.js marketing site
+- Migrated the component library to TypeScript
+- Implemented a design system used across five product teams
+- Wrote component tests with React Testing Library and Jest
+- Improved Lighthouse accessibility scores from 72 to 96
+
+Frontend Developer, Digital agency (2018-2020, 2 years)
+- Built client websites with React and vanilla CSS
+
+Skills: React, TypeScript, Next.js, Tailwind CSS, Jest, React Testing Library, Figma
+
+Education: B.A. Design, self-taught engineering

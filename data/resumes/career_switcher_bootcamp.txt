@@ -1,0 +1,16 @@
+Jordan Lee
+Aspiring Software Engineer
+
+Experience:
+Software Engineering Bootcamp Graduate (2025, 4 months)
+- Built a personal to-do list app with HTML, CSS, and vanilla JavaScript
+- Completed group project: a simple weather app calling a public REST API
+- Learned basics of Python syntax and control flow
+
+Retail Associate, Clothing store (2020-2025, 5 years)
+- Managed inventory and point-of-sale system
+- Trained new staff on store procedures
+
+Skills: HTML, CSS, JavaScript (basic), Python (basic), Git (basic)
+
+Education: Software Engineering Bootcamp Certificate, 2025

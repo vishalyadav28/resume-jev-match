@@ -1,0 +1,18 @@
+Asha Kapoor
+Senior Backend Engineer
+
+Experience:
+Senior Backend Engineer, Fintech startup (2019-present, 6 years)
+- Designed and owned three core FastAPI services handling payment processing
+- Led migration of monolith's data layer to PostgreSQL with zero-downtime schema changes
+- Built Kafka-based event pipeline for transaction reconciliation across services
+- Deployed and operated services on AWS ECS with Docker, wrote the team's on-call runbooks
+- Mentored two junior engineers; ran code review for the payments team
+
+Backend Engineer, E-commerce company (2016-2019, 3 years)
+- Built REST APIs in Python (Flask) backed by PostgreSQL
+- Introduced automated integration testing for checkout flow
+
+Skills: Python, FastAPI, Flask, PostgreSQL, Docker, AWS (ECS, Lambda), Kafka, SQS, LangChain (side projects)
+
+Education: B.S. Computer Science

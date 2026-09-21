@@ -1,0 +1,16 @@
+Ben Okafor
+Data Scientist
+
+Experience:
+Data Scientist, Retail analytics company (2021-present, 4 years)
+- Built demand forecasting models in Python using pandas and scikit-learn
+- Wrote SQL against a Snowflake warehouse for feature extraction
+- Designed and analyzed A/B tests for pricing experiments
+- Presented findings to merchandising and finance stakeholders
+
+Data Analyst, Consulting firm (2019-2021, 2 years)
+- Built dashboards and ad hoc SQL reports for clients
+
+Skills: Python, pandas, numpy, scikit-learn, SQL, Snowflake, A/B testing, Tableau
+
+Education: M.S. Statistics

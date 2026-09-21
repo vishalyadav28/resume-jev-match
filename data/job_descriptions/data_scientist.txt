@@ -1,0 +1,13 @@
+Data Scientist
+
+We're hiring a Data Scientist to work on pricing and demand forecasting models.
+
+Requirements:
+- 2+ years applying statistics or machine learning to real business problems
+- Strong Python skills: pandas, numpy, scikit-learn
+- Comfortable writing SQL against large datasets
+- Experience communicating findings to non-technical stakeholders
+
+Nice to have:
+- Experience with experiment design / A/B testing
+- Familiarity with a cloud data warehouse (BigQuery, Snowflake, Redshift)

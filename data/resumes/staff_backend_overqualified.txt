@@ -1,0 +1,20 @@
+Wei Zhang
+Staff / Principal Backend Engineer
+
+Experience:
+Principal Engineer, Large cloud infrastructure company (2018-present, 7 years)
+- Set backend architecture direction across 12 teams and 40+ engineers
+- Designed the company's multi-region PostgreSQL sharding strategy
+- Drove adoption of Kafka as the standard event bus company-wide
+- Ran the incident-response program; authored the postmortem process
+- Previously built the company's first Python/FastAPI service platform
+
+Senior Staff Engineer, Enterprise SaaS company (2012-2018, 6 years)
+- Led backend platform team of 10 engineers
+- Owned AWS infrastructure spend and reliability (99.99% uptime SLA)
+- Built internal Docker orchestration tooling before Kubernetes was viable
+
+Skills: Python, FastAPI, PostgreSQL (sharding, replication), Docker, Kubernetes,
+AWS (all core services), Kafka, distributed systems, engineering leadership
+
+Education: M.S. Computer Science

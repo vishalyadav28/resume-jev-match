@@ -1,0 +1,15 @@
+Marco Diaz
+Backend Developer
+
+Experience:
+Backend Developer, Small SaaS company (2023-present, 2 years)
+- Built and maintained internal REST APIs in Python using Flask
+- Wrote SQL queries against a MySQL database for reporting features
+- Fixed bugs in a Docker-based local development setup
+
+Intern, University research lab (2022, 6 months)
+- Wrote data-processing scripts in Python
+
+Skills: Python, Flask, MySQL, Docker (basic), Git
+
+Education: B.S. Computer Science, graduated 2023
