@@ -20,6 +20,8 @@ from langchain_typesafe import Choice, Noul, Score, TypeSafeClassifier
 from langchain_typesafe.types import ClassifierRequest, ClassifierResponse
 from pydantic import JsonValue
 
+from app.config import get_settings
+
 # Score criteria are ordered low -> high. Jev's `.score` is a
 # probability-weighted mean of the level *index* (0, 1, 2, ...), not a 0-1
 # probability, so we normalize by the number of steps to get a 0-1 fit score
@@ -93,7 +95,22 @@ def get_classifier() -> TypeSafeClassifier:
     to be set (useful for tests that don't hit the network), while real
     requests still reuse one classifier instance instead of building a new
     one per call.
+
+    Reads api_key/base_url from our own Settings (which loads .env) rather
+    than letting TypeSafeClassifier() read the raw process environment --
+    pydantic-settings loading a .env file does not export it into
+    os.environ, so the two would otherwise disagree about whether a key is
+    configured.
     """
+    settings = get_settings()
+    if settings.typesafe_api_key and settings.typesafe_base_url:
+        return TypeSafeClassifier(
+            api_key=settings.typesafe_api_key, base_url=settings.typesafe_base_url
+        )
+    if settings.typesafe_api_key:
+        return TypeSafeClassifier(api_key=settings.typesafe_api_key)
+    if settings.typesafe_base_url:
+        return TypeSafeClassifier(base_url=settings.typesafe_base_url)
     return TypeSafeClassifier()
 
 

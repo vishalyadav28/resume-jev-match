@@ -154,7 +154,7 @@ EOF
   "has_required_skills_probability": 0.97,
   "seniority_match": "matched",
   "seniority_confidence": 0.88,
-  "model": "jev-2026-09-15",
+  "model": "jev-1.13.0",
   "needs_human_review": false
 }
 ```
@@ -209,3 +209,11 @@ pytest            # unit + API tests, TypeSafeClassifier mocked out — no netwo
   optimization — it also gives you results that are consistent with each
   other, since they're all conditioned on the same evaluation pass instead
   of three independent ones.
+- Mocked tests weren't enough to catch everything: `TypeSafeClassifier()`
+  reads `TYPESAFE_API_KEY` from the real process environment, but loading a
+  `.env` file through `pydantic-settings` only populates *our* `Settings`
+  object — it doesn't export the value into `os.environ`. `/health` looked
+  fine (it only checks `Settings`), but the first real request against the
+  live API failed until `get_classifier()` was changed to pass
+  `settings.typesafe_api_key` into `TypeSafeClassifier` explicitly instead
+  of relying on it to re-read the environment on its own.
